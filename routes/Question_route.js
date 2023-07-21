@@ -55,15 +55,17 @@ router.post("/addNewQuestion",async(req,res)=>{
 
 router.post("/updateQuestion", async (req, res) => {
     const data = req.body;
+    // console.log(data.code)
     const updatedQuestion = {
       title: data.title,
+      code: data.code,
       options: data.options,
       answer: data.answer
     }
     try {
       await QuestionsModel.findOneAndUpdate(
         { exam_id: data.exam_id, 'questions._id': data.questionId },
-        { $set: { 'questions.$.title': updatedQuestion.title, 'questions.$.options': updatedQuestion.options, 'questions.$.answer': updatedQuestion.answer } }
+        { $set: { 'questions.$.title': updatedQuestion.title,'questions.$.code': updatedQuestion.code,  'questions.$.options': updatedQuestion.options, 'questions.$.answer': updatedQuestion.answer } }
       );
   
       res.status(200).send("Question updated successfully.");
