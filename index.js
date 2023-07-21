@@ -24,7 +24,7 @@ app.use("/api/user",require("./routes/User_routes"));
 app.use("/api/result",require("./routes/Result_route"));
 
 // //static files
-app.use(express.static(path.join(__dirname,'./client')));
+app.use(express.static(path.join(__dirname,'./client/build')));
 
 app.get('*', (req,res)=>{
     res.sendFile(path.join(__dirname,'./client/build/index.html'));
