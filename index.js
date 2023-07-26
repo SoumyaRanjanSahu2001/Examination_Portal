@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const path = require('path')
-const {sendMail} = require('./Email_Setup')
+// const {sendMail} = require('./Email_Setup')
 
 
 //dotenv config
@@ -35,7 +35,7 @@ app.get('*', (req,res)=>{
 
 
 ///////// sending emails///////////////
-app.post("/api/email",sendMail)
+// app.post("/api/email",sendMail)
 
 const port = process.env.PORT;
 
