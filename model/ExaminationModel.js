@@ -20,13 +20,17 @@ const Examinations = mongoose.Schema({
         type: String,
         required : true
     },
+    // objective:{
+    //     type: Boolean,
+    //     required: true
+    // },
     exam_date:{
         type: String,
         required:true
     },
     exam_type:{
         type: Boolean,
-        required: true
+        // required: true
     },
     exam_time:{
         type: Number,

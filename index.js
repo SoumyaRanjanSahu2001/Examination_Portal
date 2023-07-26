@@ -5,6 +5,9 @@ const morgan = require('morgan')
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const path = require('path')
+const {sendMail} = require('./Email_Setup')
+
+
 //dotenv config
 dotenv.config();
 
@@ -23,12 +26,16 @@ app.use("/api/exam",require("./routes/Exam_route"));
 app.use("/api/user",require("./routes/User_routes"));
 app.use("/api/result",require("./routes/Result_route"));
 
-// //static files
-app.use(express.static(path.join(__dirname,'../client')));
+//static files
+app.use(express.static(path.join(__dirname,'./client/build')));
 
 app.get('*', (req,res)=>{
-    res.sendFile(path.join(__dirname,'../client/build/index.html'));
+    res.sendFile(path.join(__dirname,'./client/build/index.html'));
 })
+
+
+///////// sending emails///////////////
+app.post("/api/email",sendMail)
 
 const port = process.env.PORT;
 

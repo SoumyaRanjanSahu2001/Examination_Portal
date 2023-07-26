@@ -32,12 +32,13 @@ router.post("/createExam",authorization,async(req,res)=>{
     // console.log(exam);
     // console.log(req.userId);
     // console.log(req.name)
-    console.log(exam.exam_time);
+    // console.log(exam.exam_time);
     try{
         const newExam = new ExaminationModel({
             exam_name: exam.exam_name,
             teacher_id: req.userId,
             teacher_name: req.name,
+            // objective: exam.objective,
             exam_type: exam.exam_type,
             exam_time: exam.exam_time,
             exam_date: exam.exam_date,

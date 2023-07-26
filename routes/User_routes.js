@@ -4,6 +4,7 @@ const User = require('../model/UserModel');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const authorization = require('../middleware/authorization');
+const { sendMail } = require('../Email_Setup');
 const secretKey = process.env.SECRET
 
 router.get('/getAllStudents',async(req,res)=>{
@@ -56,12 +57,17 @@ router.post('/addUser',authorization,async(req,res)=>{
             const student = new User({name,email,mobile,registration_no,password,year});
         //hashing password
         await student.save();
+         
+
+        sendMail({email:email,subject:"Login Credentials for MCA Examination Portal.",userId:registration_no,password:password})
         
-        res.status(201).json({message: "user registered sucessfully"});
+         res.status(201).json({message: "user registered sucessfully"});
+
+         
         }
     }catch(err){
         res.status(400).json({
-            message:err
+            error:"bad request"
         });
     }
 });
