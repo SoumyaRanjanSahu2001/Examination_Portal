@@ -13,7 +13,7 @@ exports.sendMail =  function (data){
     const {email,subject,password,userId} = data;
 
     const mailoption = {
-        from:"srsahu800@gmail.com",
+        from:"soumyaranjansahuliku@gmail.com",
         to: email,
         subject: subject,
         // text : message,
