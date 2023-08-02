@@ -81,7 +81,7 @@ router.post("/addUser", authorization, async (req, res) => {
     }
   } catch (err) {
     res.status(400).json({
-      error: "bad request,
+      error: "bad request",
         err: err
     });
   }
