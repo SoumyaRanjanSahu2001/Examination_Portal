@@ -40,17 +40,7 @@ exports.Mail = function (data) {
         </html>
         `,
   };
-
-  transporter.sendMail(mailoption, (error, info) => {
-    console.log(mailoption);
-      if (error) {
-      console.log(error);
-      // return error;
-      // res.status(500).send("internal error");
-    } else {
-      console.log(info.response);
-      // return info.response;
-      // res.status(200).send({"message":"email sent successfylly..."})
-    }
-  });
+ console.log(mailoption);
+  const resp =  transporter.sendMail(mailoption);
+  console.log(resp);
 };
