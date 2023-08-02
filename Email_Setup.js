@@ -3,13 +3,8 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-<<<<<<< HEAD
     user: "soumyaranjansahuliku@gmail.com",
     pass: "fvhvnvgxrwyhtrxi",
-=======
-    user: process.env.EMAIL,
-    pass: process.env.PASS,
->>>>>>> eae5c1bfd431e1f4a004a25f4fb7310696e4af1d
   },
 });
 
@@ -47,11 +42,13 @@ exports.sendMail = function (data) {
   };
 
   transporter.sendMail(mailoption, (error, info) => {
-    if (error) {
-      // console.log(error);
+      if (error) {
+      console.log(error);
+      return error;
       // res.status(500).send("internal error");
     } else {
-      // console.log(info.response);
+      console.log(info.response);
+      return info.response;
       // res.status(200).send({"message":"email sent successfylly..."})
     }
   });
