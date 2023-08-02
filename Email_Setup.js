@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = function (data) {
-  // console.log(data)
+   console.log(data)
   const { email, subject, password, userId } = data;
 
   const mailoption = {
@@ -42,13 +42,14 @@ exports.sendMail = function (data) {
   };
 
   transporter.sendMail(mailoption, (error, info) => {
+    console.log(mailoption);
       if (error) {
       console.log(error);
-      return error;
+      // return error;
       // res.status(500).send("internal error");
     } else {
       console.log(info.response);
-      return info.response;
+      // return info.response;
       // res.status(200).send({"message":"email sent successfylly..."})
     }
   });
