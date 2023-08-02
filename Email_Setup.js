@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-exports.Mail = async function (data) {
-   console.log(data)
+exports.Mail = function (data) {
+  // console.log(data)
   const { email, subject, password, userId } = data;
 
   const mailoption = {
@@ -40,7 +40,16 @@ exports.Mail = async function (data) {
         </html>
         `,
   };
- console.log(mailoption);
-  const resp = await transporter.sendMail(mailoption);
-  console.log(resp);
+
+  transporter.sendMail(mailoption, (error, info) => {
+    if (error) {
+      console.log(error);
+      return error;
+      // res.status(500).send("internal error");
+    } else {
+      console.log(info.response);
+      return info.response;
+      // res.status(200).send({"message":"email sent successfylly..."})
+    }
+  });
 };
