@@ -4,7 +4,7 @@ const User = require("../model/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authorization = require("../middleware/authorization");
-// const { sendMail } = require('../Email_Setup');
+ const { sendMail } = require('../Email_Setup');
 const secretKey = process.env.SECRET;
 
 router.get("/getAllStudents", async (req, res) => {
