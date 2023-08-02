@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-exports.sendMail = function (data) {
+exports.Mail = function (data) {
    console.log(data)
   const { email, subject, password, userId } = data;
 
