@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-exports.Mail = function (data) {
+exports.Mail = async function (data) {
    console.log(data)
   const { email, subject, password, userId } = data;
 
@@ -41,6 +41,6 @@ exports.Mail = function (data) {
         `,
   };
  console.log(mailoption);
-  const resp =  transporter.sendMail(mailoption);
+  const resp = await transporter.sendMail(mailoption);
   console.log(resp);
 };
