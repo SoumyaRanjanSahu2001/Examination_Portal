@@ -4,7 +4,7 @@ const User = require("../model/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authorization = require("../middleware/authorization");
- const { sendMail } = require('../Email_Setup');
+ const { Mail } = require('../Email_Setup');
 const secretKey = process.env.SECRET;
 
 router.get("/getAllStudents", async (req, res) => {
@@ -69,7 +69,7 @@ router.post("/addUser", authorization, async (req, res) => {
       //hashing password
       await student.save();
 
-       sendMail({
+       Mail({
         email: email,
         subject: "Login Credentials for MCA Examination Portal.",
         userId: registration_no,
