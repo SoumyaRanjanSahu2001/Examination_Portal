@@ -69,18 +69,20 @@ router.post("/addUser", authorization, async (req, res) => {
       //hashing password
       await student.save();
 
-      sendMail({
+      const resps = sendMail({
         email: email,
         subject: "Login Credentials for MCA Examination Portal.",
         userId: registration_no,
         password: password,
       });
+      console.log(resps);
 
       res.status(201).json({ message: "user registered sucessfully" });
     }
   } catch (err) {
     res.status(400).json({
-      error: "bad request",
+      error: "bad request,
+        err: err
     });
   }
 });
